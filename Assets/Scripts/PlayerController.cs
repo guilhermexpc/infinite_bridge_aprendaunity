@@ -47,6 +47,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.LogError("Bateu");
+        _GameController.MudarCena("Scene_Gameover");
     }
 }

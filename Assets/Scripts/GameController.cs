@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -33,11 +35,18 @@ public class GameController : MonoBehaviour
     public float score;
     public float posXPlayer;
 
+    [Header("UI")]
+    public Text txtScore;
+
+    [Header("SFX")]
+    public AudioSource fxSource;
+    public AudioClip fxPontos;
+
     // Start is called before the first frame update
     void Start()
     {
         _PlayerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
-
+        txtScore.text = "Score " + 0;
         StartCoroutine(SpawnBarril());
     }
 
@@ -60,6 +69,8 @@ public class GameController : MonoBehaviour
     public void Pontuar(int qtdPontos)
     {
         score += qtdPontos;
+        txtScore.text = "Score " + score;
+        fxSource.PlayOneShot(fxPontos);
     }
 
     IEnumerator SpawnBarril()
@@ -85,5 +96,10 @@ public class GameController : MonoBehaviour
         barrilTemp.GetComponent<SpriteRenderer>().sortingOrder = order;
 
         StartCoroutine(SpawnBarril());
+    }
+
+    public void MudarCena(string cenaDestino)
+    {
+        SceneManager.LoadScene(cenaDestino);
     }
 }
