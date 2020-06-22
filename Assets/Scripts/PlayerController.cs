@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Movimentacao : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private GameController _GameController;
     private Rigidbody2D playerRb;
@@ -43,5 +43,10 @@ public class Player_Movimentacao : MonoBehaviour
     private void ConfigurarQualidade()
     {
         QualitySettings.vSyncCount = 1;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.LogError("Bateu");
     }
 }

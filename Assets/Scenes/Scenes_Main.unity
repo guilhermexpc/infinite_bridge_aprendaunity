@@ -195,7 +195,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52343842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.014, y: -0.4098, z: 0}
+  m_LocalPosition: {x: 0.014, y: -0.11, z: 0}
   m_LocalScale: {x: 18.11453, y: 1.6513895, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -249,8 +249,20 @@ MonoBehaviour:
   limiteXMax: 2.07
   limiteYMin: -0.37
   limiteYMax: -0.05
+  gbPontePrefab: {fileID: 5416981240958198665, guid: 08e99a28a2a714f428cd2bddf52a8dca,
+    type: 3}
+  gbBarrilPrefab: {fileID: 6800490851095079018, guid: d1233f247908cbc4e8e94de1d9376c7b,
+    type: 3}
   velocidadePonte: -2
   objetoDistanciaDestruir: -6
+  tamanhoPonte: 6
+  barrilPosYTop: 0.097
+  barrilPosYDown: -0.203
+  barrilOrderTop: 8
+  barrilOrderDown: 12
+  barrilTempoSpawn: 1
+  score: 0
+  posXPlayer: 0
 --- !u!1 &219326044
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +276,7 @@ GameObject:
   - component: {fileID: 219326045}
   - component: {fileID: 219326049}
   - component: {fileID: 219326048}
+  - component: {fileID: 219326050}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -348,7 +361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219326044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.07, y: -0.37, z: 0}
+  m_LocalPosition: {x: -0.35, y: -0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 772492581}
@@ -389,6 +402,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &219326050
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219326044}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03175974, y: 0.15581882}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.6666667, y: 0.8333333}
+    newSize: {x: 0.6666667, y: 0.8333333}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.21448684, y: 0.107756495}
+  m_EdgeRadius: 0
 --- !u!1 &277397289
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +900,7 @@ PrefabInstance:
     - target: {fileID: 5416981240958198671, guid: 08e99a28a2a714f428cd2bddf52a8dca,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5416981240958198671, guid: 08e99a28a2a714f428cd2bddf52a8dca,
         type: 3}
