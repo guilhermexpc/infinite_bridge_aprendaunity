@@ -5,16 +5,8 @@ using UnityEngine;
 
 public class Player_Movimentacao : MonoBehaviour
 {
+    private GameController _GameController;
     private Rigidbody2D playerRb;
-
-    [Header("Atributos")]
-    public float velocidadeMovimento;
-
-    [Header ("Limite Movimentacao")]
-    public float limiteXMin;
-    public float limiteXMax;
-    public float limiteYMin;
-    public float limiteYMax;
 
     public Vector3 vt3LimiteMovimentacao;
 
@@ -26,6 +18,8 @@ public class Player_Movimentacao : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _GameController = FindObjectOfType(typeof(GameController)) as GameController;
+
         ConfigurarQualidade();
     }
 
@@ -35,14 +29,14 @@ public class Player_Movimentacao : MonoBehaviour
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
 
-        playerRb.velocity = new Vector2(moveHorizontal * velocidadeMovimento, moveVertical * velocidadeMovimento);
+        playerRb.velocity = new Vector2(moveHorizontal * _GameController.velocidadeMovimento, moveVertical * _GameController.velocidadeMovimento);
         LimitarMovimento(transform.position.x, transform.position.y);
     }
     
     private void LimitarMovimento(float posicaoX, float posicaoY)
     {
-        vt3LimiteMovimentacao = new Vector3(Mathf.Clamp(posicaoX, limiteXMin, limiteXMax),
-                                        Mathf.Clamp(posicaoY, limiteYMin, limiteYMax), 0);
+        vt3LimiteMovimentacao = new Vector3(Mathf.Clamp(posicaoX, _GameController.limiteXMin, _GameController.limiteXMax),
+                                        Mathf.Clamp(posicaoY, _GameController.limiteYMin, _GameController.limiteYMax), 0);
         transform.position = vt3LimiteMovimentacao;
     }
 
